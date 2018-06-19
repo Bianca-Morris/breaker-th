@@ -78,6 +78,8 @@ class App extends Component {
                                 />
                             </div>
                             <div className="Right-sidebar">
+                                <Link to="/display">/display</Link><br />
+                                <Link to="/edit">/edit</Link>
                                 <Switch>
                                     <Redirect exact from={`/`} to={`/display`} />
                                     <Route
