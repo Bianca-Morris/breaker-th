@@ -1,0 +1,122 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(
+        147.41deg, #1269FF -0.42%, rgba(255,64,192,0.93) 70.31%,
+        #003DAD);
+    height: 100%;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 80px;
+  max-width: 100%;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+audio {
+    width: 100%;
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.Main {
+    width: 100%;
+    display: flex;
+    /* padding: 0 10%; */
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+.Left-sidebar {
+    flex: 1;
+    background-color: #eee;
+}
+
+.Right-sidebar {
+    flex: 3;
+    background-color: #eee;
+}
+
+.Now-playing > img {
+    width: 100%;
+}
+
+.Ep-tag {
+    display: inline;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 11px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.Ep-tag:not(last-of-type) {
+    margin-right: 4px;
+}
+
+.Ep-tag:hover {
+    text-decoration: underline;
+}
+
+.Stats {
+    display: flex;
+}
+
+.Stats button {
+    margin: 10px;
+    padding: 5px;
+    flex: 1;
+    border: 1px solid black;
+    border-radius: 30px;
+    background-color: none;
+}
+
+/* Small screens */
+@Media screen and (max-width: 750px) {
+    .Main {
+        padding: 10px 0;
+        flex-direction: column;
+    }
+
+    .Left-sidebar, .Right-sidebar {
+        padding-bottom: 5px;
+    }
+
+    .Now-playing > img  {
+        max-width: 300px;
+    }
+}
+
+/* Large screens */
+@Media screen and (min-width: 992px) {
+    .Main {
+        max-width: 1000px;
+    }
+    .Now-playing {
+        padding: 0px 5%;
+    }
+}
