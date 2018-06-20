@@ -54,14 +54,16 @@ audio {
 .Left-sidebar {
     flex: 1;
     background-color: #eee;
+    padding-top: 60px;
 }
 
 .Right-sidebar {
     flex: 3;
     background-color: #eee;
+    padding: 0 20px;
 }
 
-.Now-playing > img {
+.sidebar > img {
     width: 100%;
 }
 
@@ -95,6 +97,33 @@ audio {
     background-color: none;
 }
 
+.Stats button:hover {
+    background-color: #1269FF;
+    color: #fff;
+}
+
+.Curr-ep-cont {
+    display: flex;
+    flex-direction: row;
+}
+
+.Curr-ep {
+    flex: 1;
+    max-width: 600px;
+}
+.Curr-ep img {
+    max-width: 500px;
+}
+
+.Curr-ep-tools {
+    flex: 1;
+}
+
+#Edit-button {
+    float: right;
+    bottom-margin: 20px;
+}
+
 /* Small screens */
 @Media screen and (max-width: 750px) {
     .Main {
@@ -106,7 +135,7 @@ audio {
         padding-bottom: 5px;
     }
 
-    .Now-playing > img  {
+    .sidebar > img  {
         max-width: 300px;
     }
 }
@@ -116,7 +145,7 @@ audio {
     .Main {
         max-width: 1000px;
     }
-    .Now-playing {
+    .sidebar {
         padding: 0px 5%;
     }
 }

@@ -5,10 +5,8 @@ import EpTag from './EpTag';
 
 import '../App.css';
 
-const NowPlaying = (props) => (
-      <div className="Now-playing">
-          <h3>{props.show.name}</h3>
-          <p>{props.show.artist_name}</p>
+const Sidebar = (props) => (
+      <div className="sidebar">
           <img src={props.show.image_url} />
           <p>
               {props.show.stripped_description}
@@ -53,4 +51,4 @@ const NowPlaying = (props) => (
       </div>
 );
 
-export default NowPlaying;
+export default Sidebar;

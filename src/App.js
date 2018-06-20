@@ -10,9 +10,10 @@ import {
 
 import logo from './logo.svg';
 import AudioPlayer from './components/AudioPlayer';
-import NowPlaying from './components/NowPlaying';
+import Sidebar from './components/Sidebar';
 import Edit from './components/Edit';
 import Display from './components/Display';
+// import NowPlaying from './components/NowPlaying';
 
 import './App.css';
 
@@ -28,6 +29,11 @@ class App extends Component {
 
     componentDidMount() {
         // retrieve the audio data from the API
+        this.updateEp();
+    }
+
+    updateEp() {
+        // retrieve updated audio data from the API
         axios.get('http://localhost:8080/episode')
         .then(resp => {
             console.log('resp.data', resp.data);
@@ -41,19 +47,12 @@ class App extends Component {
         });
     }
 
-    updateEp() {
-        axios.patch('http://localhost:8080/episode')
-        .then(resp => {
-            console.log('Successful!');
-            console.log('resp', resp);
-        })
-        .catch(err => {
-            console.log('Failed!');
-            console.log('err', err);
-        });
+    mainPage() {
+        return (<Display getEp={() => this.state.episode} />);
     }
 
     render() {
+        console.log('Ep: ', this.state.episode);
         return (
             <Router>
               <div className="App">
@@ -61,32 +60,31 @@ class App extends Component {
                           <img src={logo} className="App-logo" alt="logo" />
                           {
                               this.state.status !== 'Loaded!' ? null :
-                              <AudioPlayer
-                                  source={this.state.episode.enclosure_url}
-                                  sourceType={this.state.episode.enclosure_type}
-                              />
+
+                                  <AudioPlayer
+                                      source={this.state.episode.enclosure_url}
+                                      sourceType={this.state.episode.enclosure_type}
+                                  />
                           }
                     </header>
                     {
                         this.state.status !== 'Loaded!' ? null :
                         <div className="Main">
                             <div className="Left-sidebar">
-                                <h1>Now Playing...</h1>
-                                <NowPlaying
+                                <Sidebar
                                     show={this.state.episode.show}
                                     eptitle={this.state.episode.title}
                                 />
                             </div>
                             <div className="Right-sidebar">
-                                <Link to="/display">/display</Link><br />
+                                <Link to="/listen">/display</Link><br />
                                 <Link to="/edit">/edit</Link>
                                 <Switch>
-                                    <Redirect exact from={`/`} to={`/display`} />
+                                    <Redirect exact from={`/`} to={`/listen`} />
                                     <Route
-                                        path='/display'
+                                        path='/listen'
                                         exact
-                                        component={Display}
-                                        ep={this.state.episode}
+                                        component={() => this.mainPage()}
                                     />
                                     <Route
                                         path='/edit'
